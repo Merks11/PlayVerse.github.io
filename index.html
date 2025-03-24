@@ -9,19 +9,23 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            height: 100vh;
             background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+            height: 200vh; /* Duplicamos la altura para permitir desplazamiento */
         }
-        img {
-            max-width: 100%;
+        header {
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        header img {
+            max-width: 150px; /* Reducir el tamaño del título */
             height: auto;
         }
         .scrollbox {
             width: 80%;
+            margin: 20px auto;
             overflow-x: auto;
             white-space: nowrap;
             scroll-behavior: smooth;
@@ -51,7 +55,9 @@
     </style>
 </head>
 <body>
-    <img src="images/Playverse_icon.png" alt="Play Verse">
+    <header>
+        <img src="images/Playverse_icon.png" alt="Play Verse">
+    </header>
     <div class="scrollbox">
         <button class="button" onclick="openGame()">
             <img src="https://imgs.crazygames.com/space-waves_16x9/20241203031650/space-waves_16x9-cover?metadata=none&quality=70&width=426.5" alt="Space Waves">
