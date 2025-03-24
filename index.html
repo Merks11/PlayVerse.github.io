@@ -13,15 +13,8 @@
             background-size: cover;
             height: 200vh; /* Duplicamos la altura para permitir desplazamiento */
         }
-        header {
-            width: 100%;
-            text-align: center;
-            padding: 10px 0;
-            background-color: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
         header img {
-            max-width: 150px; /* Reducir el tamaño del título */
+            max-width: 300px; /* Aumentar el tamaño del título */
             height: auto;
         }
         .scrollbox {
@@ -39,12 +32,14 @@
             cursor: pointer;
             padding: 20px;
             border-radius: 10px;
-            width: 200px;
-            height: 200px;
+            width: 426.5px; /* Mantener el ancho original de la imagen */
+            height: 240px; /* Mantener la altura original de la imagen */
+            mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 10 10"><rect width="10" height="10" rx="2" ry="2" /></svg>');
+            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 10 10"><rect width="10" height="10" rx="2" ry="2" /></svg>');
         }
         .button img {
-            width: 90%;
-            height: 90%;
+            width: 100%;
+            height: 100%;
             display: block;
             margin: auto;
         }
