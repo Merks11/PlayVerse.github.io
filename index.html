@@ -9,19 +9,50 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            height: 100vh;
+            background-color: #f0f0f0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
+            flex-direction: column;
         }
         img {
             max-width: 100%;
             height: auto;
         }
+        .scrollbox {
+            width: 80%;
+            overflow-x: auto;
+            white-space: nowrap;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .scrollbox::-webkit-scrollbar {
+            display: none;  /* Chrome, Safari and Opera */
+        }
+        .button {
+            display: inline-block;
+            margin: 10px;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <img src="Playverse_icon.png" alt="Play Verse">
+    <div class="scrollbox">
+        <button class="button" onclick="openGame()">
+            <img src="https://imgs.crazygames.com/space-waves_16x9/20241203031650/space-waves_16x9-cover?metadata=none&quality=70&width=426.5" alt="Space Waves">
+        </button>
+    </div>
+
+    <script>
+        function openGame() {
+            var newWindow = window.open('about:blank', '_blank');
+            newWindow.document.write('<html><head><title>Space Waves</title></head><body style="margin:0"><iframe src="https://www.crazygames.com/es/juego/space-waves" style="border:none;width:100vw;height:100vh;"></iframe></body></html>');
+        }
+    </script>
 </body>
 </html>
