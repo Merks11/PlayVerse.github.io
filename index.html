@@ -28,20 +28,16 @@
             display: inline-block;
             margin: 10px;
             border: none;
-            background-color: #2e005e; /* Muy oscuro morado */
+            background-color: transparent; /* Hacer el fondo del botón transparente */
             cursor: pointer;
-            padding: 20px;
+            padding: 0;
             border-radius: 10px;
-            width: 426.5px; /* Mantener el ancho original de la imagen */
-            height: 240px; /* Mantener la altura original de la imagen */
-            mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 10 10"><rect width="10" height="10" rx="2" ry="2" /></svg>');
-            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 10 10"><rect width="10" height="10" rx="2" ry="2" /></svg>');
         }
         .button img {
-            width: 100%;
-            height: 100%;
+            width: 426.5px; /* Ancho original de la imagen */
+            height: 240px; /* Altura original de la imagen */
             display: block;
-            margin: auto;
+            border-radius: 10px; /* Borde biselado */
         }
     </style>
 </head>
