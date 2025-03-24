@@ -9,14 +9,15 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background: url('images/space.jpg') no-repeat center center fixed;
+            background-size: cover;
             height: 200vh; /* Duplicamos la altura para permitir desplazamiento */
         }
         header {
             width: 100%;
             text-align: center;
             padding: 10px 0;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.8);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         header img {
@@ -26,14 +27,9 @@
         .scrollbox {
             width: 80%;
             margin: 20px auto;
-            overflow-x: auto;
+            overflow-x: hidden;
             white-space: nowrap;
             scroll-behavior: smooth;
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
-        .scrollbox::-webkit-scrollbar {
-            display: none;  /* Chrome, Safari and Opera */
         }
         .button {
             display: inline-block;
