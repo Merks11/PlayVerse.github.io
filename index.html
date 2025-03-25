@@ -25,9 +25,9 @@
         .scrollbox {
             width: 80%;
             margin: 20px auto;
-            overflow-x: hidden;
-            white-space: nowrap;
-            scroll-behavior: smooth;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .button {
             display: inline-block;
@@ -60,27 +60,21 @@
         <img src="images/Playverse_icon.png" alt="Play Verse">
     </header>
     <div class="scrollbox">
-        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-            <div>
-                <button class="button" onclick="openGame1()">
-                    <img src="https://imgs.crazygames.com/space-waves_16x9/20241203031650/space-waves_16x9-cover?metadata=none&quality=70&width=426.5" alt="Space Waves">
-                </button>
-                <button class="button" onclick="openGame5()">
-                    <img src="https://images.crazygames.com/games/drift-boss/cover_16x9-1732741931008.png?auto=format,compress&q=75&cs=strip" alt="Drift Boss">
-                </button>
-            </div>
-            <div>
-                <button class="button" onclick="openGame2()">
-                    <img src="https://play-lh.googleusercontent.com/pmZM3o2qIu8YUdB3NdMFLcgR-9LuGV2ab0ZBfmTOhXWoyR4lfM7yrQCzkgJnzcWsCg=w526-h296-rw" alt="Red Ball">
-                </button>
-                <button class="button" onclick="openGame3()">
-                    <img src="https://cdn2.spatial.io/assets/v1/static/external_games/bloxd-io.jpeg" alt="Bloxd.io">
-                </button>
-                <button class="button" onclick="openGame4()">
-                    <img src="https://lh3.googleusercontent.com/KiHL8uJ3l3QfpimFQh4BfyDI4-84H37S3ZS-KK-eTKzje8Bv_q2IUFRZ9LA5d0AQRe0V_ABXT1ydk9KfRZqao2loWa8=s1280-w1280-h800" alt="Level Devil">
-                </button>
-            </div>
-        </div>
+        <button class="button" onclick="openGame1()">
+            <img src="https://imgs.crazygames.com/space-waves_16x9/20241203031650/space-waves_16x9-cover?metadata=none&quality=70&width=426.5" alt="Space Waves">
+        </button>
+        <button class="button" onclick="openGame2()">
+            <img src="https://play-lh.googleusercontent.com/pmZM3o2qIu8YUdB3NdMFLcgR-9LuGV2ab0ZBfmTOhXWoyR4lfM7yrQCzkgJnzcWsCg=w526-h296-rw" alt="Red Ball">
+        </button>
+        <button class="button" onclick="openGame3()">
+            <img src="https://cdn2.spatial.io/assets/v1/static/external_games/bloxd-io.jpeg" alt="Bloxd.io">
+        </button>
+        <button class="button" onclick="openGame4()">
+            <img src="https://lh3.googleusercontent.com/KiHL8uJ3l3QfpimFQh4BfyDI4-84H37S3ZS-KK-eTKzje8Bv_q2IUFRZ9LA5d0AQRe0V_ABXT1ydk9KfRZqao2loWa8=s1280-w1280-h800" alt="Level Devil">
+        </button>
+        <button class="button" onclick="openGame5()">
+            <img src="https://images.crazygames.com/games/drift-boss/cover_16x9-1732741931008.png?auto=format,compress&q=75&cs=strip" alt="Drift Boss">
+        </button>
     </div>
 
     <script>
