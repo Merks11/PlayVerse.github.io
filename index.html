@@ -23,20 +23,20 @@
         header img {
             max-width: 700px; /* Aumentar el tamaño del título */
             height: auto;
-            animation: bounce 4s infinite; /* Aplicar la animación */
+            animation: rotate 4s ease-in-out infinite; /* Aplicar la animación */
         }
-        @keyframes bounce {
+        @keyframes rotate {
             0%, 100% {
-                transform: translateY(0) rotate(0deg);
+                transform: rotate(0deg);
             }
             25% {
-                transform: translateY(-20px) translateX(-10px) rotate(-5deg);
+                transform: rotate(-5deg);
             }
             50% {
-                transform: translateY(0) translateX(0) rotate(0deg);
+                transform: rotate(0deg);
             }
             75% {
-                transform: translateY(-20px) translateX(10px) rotate(5deg);
+                transform: rotate(5deg);
             }
         }
         .scrollbox {
