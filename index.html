@@ -96,18 +96,21 @@
         <button class="button" onclick="openCookieClicker()">
             <img src="https://upload.wikimedia.org/wikipedia/en/0/06/Cookie_Clicker_logo.png" alt="Cookie Clicker">
         </button>
+        <button class="button" onclick="openEaglercraft()">
+            <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/8/8d/Bedrock_Edition_Google_Play_icon_1.png/revision/latest/scale-to-width-down/250?cb=20230705034225" alt="Eaglercraft">
+        </button>
     </div>
 
     <script>
         function openGame1() {
             var newWindow = window.open('about:blank', '_blank');
-            newWindow.document.write('<html><head><title>Space Waves</title></head><body style="margin:0"><iframe src="https://games.crazygames.com/es_ES/space-waves/index.html?v=1.307" style="width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></body></html>');
+            newWindow.document.write('<html><head><title>Space Waves</title></head><body style="margin:0"><iframe src="https://games.crazygames.com/es_ES/space-waves/index.html?v=1.307" style="width:100%; height:100%;" frameborder="0" allowfullscreen></iframe></body></html>');
             newWindow.document.close();
         }
 
         function openGame2() {
             var newWindow = window.open('about:blank', '_blank');
-            newWindow.document.write('<html><head><title>Red Ball</title></head><body style="margin:0"><iframe src="https://games-online.io/game/RedBall_V1/?mp_assets=https%3A%2F%2Fs2.minijuegosgr.es%2Fassets%2Fgames%2Ffiles%2FRedBall_V1%2F" style="width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></body></html>');
+            newWindow.document.write('<html><head><title>Red Ball</title></head><body style="margin:0"><iframe src="https://games-online.io/game/RedBall_V1/?mp_assets=https%3A%2F%2Fs2.minijuegosgrandes.com%2Fgamefiles%2F200%2FRed-Ball-Hero-4%2F" style="width:100%; height:100%;" frameborder="0" allowfullscreen></iframe></body></html>');
             newWindow.document.close();
         }
 
@@ -132,6 +135,12 @@
         function openCookieClicker() {
             var newWindow = window.open('about:blank', '_blank');
             newWindow.document.write('<html><head><title>Cookie Clicker</title></head><body style="margin:0"><iframe src="https://eldardo.net/AACHAT%20EMCT/emctgames/games/cookie-clicker/" style="width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></body></html>');
+            newWindow.document.close();
+        }
+
+        function openEaglercraft() {
+            var newWindow = window.open('about:blank', '_blank');
+            newWindow.document.write('<html><head><title>Eaglercraft</title></head><body style="margin:0"><iframe src="https://eaglercraft.com/mc/1.8.8/" style="width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></body></html>');
             newWindow.document.close();
         }
     </script>
