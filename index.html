@@ -99,18 +99,22 @@
         <button class="button" onclick="openEaglercraft()">
             <img src="https://graphicsprings.com/wp-content/uploads/2023/07/image-62.png" alt="Eaglercraft">
         </button>
+        <!-- Nuevo botón -->
+        <button class="button" onclick="openTunnelRush()">
+            <img src="https://play-lh.googleusercontent.com/tTioV1Kw69yDdww8nBF17-NbW2akDL25RV9XTO-PZ7hEKamuXm95bqhs2-mRcoFnWqNo=w526-h296-rw" alt="Tunnel Rush">
+        </button>
     </div>
 
     <script>
         function openGame1() {
             var newWindow = window.open('about:blank', '_blank');
-            newWindow.document.write('<html><head><title>Space Waves</title></head><body style="margin:0"><iframe src="https://games.crazygames.com/es_ES/space-waves/index.html?v=1.307" style="width:100%; height:100%;" frameborder="0" allowfullscreen></iframe></body></html>');
+            newWindow.document.write('<html><head><title>Space Waves</title></head><body style="margin:0"><iframe src="https://games.crazygames.com/es_ES/space-waves/index.html?v=1.307" style="width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></body></html>');
             newWindow.document.close();
         }
 
         function openGame2() {
             var newWindow = window.open('about:blank', '_blank');
-            newWindow.document.write('<html><head><title>Red Ball</title></head><body style="margin:0"><iframe src="https://games-online.io/game/RedBall_V1/?mp_assets=https%3A%2F%2Fs2.minijuegosgrandes.com%2Fgamefiles%2F200%2FRed-Ball-Hero-4%2F" style="width:100%; height:100%;" frameborder="0" allowfullscreen></iframe></body></html>');
+            newWindow.document.write('<html><head><title>Red Ball</title></head><body style="margin:0"><iframe src="https://games-online.io/game/RedBall_V1/?mp_assets=https%3A%2F%2Fs2.minijuegosgratis.com%2Fassets%2Fgames%2Fredball%2Fv1%2F" style="width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></body></html>');
             newWindow.document.close();
         }
 
@@ -141,6 +145,13 @@
         function openEaglercraft() {
             var newWindow = window.open('about:blank', '_blank');
             newWindow.document.write('<html><head><title>Eaglercraft</title></head><body style="margin:0"><iframe src="https://eaglercraft.com/mc/1.8.8/" style="width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></body></html>');
+            newWindow.document.close();
+        }
+
+        // Nueva función para el botón Tunnel Rush
+        function openTunnelRush() {
+            var newWindow = window.open('about:blank', '_blank');
+            newWindow.document.write('<html><head><title>Tunnel Rush</title></head><body style="margin:0"><iframe src="https://tunnelrushgame.io/game/tunnel-rush/" style="width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></body></html>');
             newWindow.document.close();
         }
     </script>
