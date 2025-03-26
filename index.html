@@ -38,8 +38,8 @@
             background-color: transparent; /* Hacer el fondo del botón transparente */
             cursor: pointer;
             padding: 0;
-            width: 180px; /* Aumentar el tamaño del botón */
-            height: 180px; /* Aumentar el tamaño del botón */
+            width: 200px; /* Aumentar el tamaño del botón */
+            height: 200px; /* Aumentar el tamaño del botón */
             position: relative;
             overflow: hidden;
             border-radius: 10px; /* Borde biselado */
@@ -51,8 +51,9 @@
             transform: translate(-50%, -50%);
             max-width: 100%;
             max-height: 100%;
-            width: auto;
-            height: auto;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Asegurar que la imagen cubra todo el botón sin deformarse */
             border-radius: 10px; /* Borde biselado */
         }
         .invisible-button {
