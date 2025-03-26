@@ -38,16 +38,22 @@
             background-color: transparent; /* Hacer el fondo del botón transparente */
             cursor: pointer;
             padding: 0;
-            width: 240px; /* Hacer el botón cuadrado */
-            height: 240px; /* Hacer el botón cuadrado */
+            width: 150px; /* Reducir el tamaño del botón */
+            height: 150px; /* Reducir el tamaño del botón */
             position: relative;
             overflow: hidden;
             border-radius: 10px; /* Borde biselado */
         }
         .button img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Asegurar que la imagen cubra todo el botón sin deformarse */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            border-radius: 10px; /* Borde biselado */
         }
         .invisible-button {
             position: absolute;
