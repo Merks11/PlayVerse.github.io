@@ -103,6 +103,10 @@
         <button class="button" onclick="openTunnelRush()">
             <img src="https://play-lh.googleusercontent.com/tTioV1Kw69yDdww8nBF17-NbW2akDL25RV9XTO-PZ7hEKamuXm95bqhs2-mRcoFnWqNo=w526-h296-rw" alt="Tunnel Rush">
         </button>
+        <!-- Nuevo botón Drive Mad -->
+        <button class="button" onclick="openDriveMad()">
+            <img src="https://play-lh.googleusercontent.com/7l3WAPbei9MXrxnCzImpXi2VxjEBtgDl0htwvTnA-YqpJAuQJPpSiby1oB8LZMgD0IAy" alt="Drive Mad">
+        </button>
     </div>
 
     <script>
@@ -152,6 +156,13 @@
         function openTunnelRush() {
             var newWindow = window.open('about:blank', '_blank');
             newWindow.document.write('<html><head><title>Tunnel Rush</title></head><body style="margin:0"><iframe src="https://tunnelrushgame.io/game/tunnel-rush/" style="width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></body></html>');
+            newWindow.document.close();
+        }
+
+        // Nueva función para el botón Drive Mad
+        function openDriveMad() {
+            var newWindow = window.open('about:blank', '_blank');
+            newWindow.document.write('<html><head><title>Drive Mad</title></head><body style="margin:0"><iframe src="https://eldardo.net/cvo/aajuegos/dpm/assets/gxmes/drive-mad/" style="width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></body></html>');
             newWindow.document.close();
         }
     </script>
