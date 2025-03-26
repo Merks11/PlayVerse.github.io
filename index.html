@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,19 +23,7 @@
             height: 100%;
             background: url('https://citylabs.net/wp-content/uploads/2023/08/night-sky-colors.jpg') no-repeat center center fixed;
             background-size: cover;
-            animation: backgroundAnimation 60s infinite linear; /* Aplicar la animación al fondo */
             z-index: -1; /* Asegurarse de que el fondo esté detrás del contenido */
-        }
-        @keyframes backgroundAnimation {
-            0% {
-                transform: rotate(0deg) scale(1);
-            }
-            50% {
-                transform: rotate(180deg) scale(1.05);
-            }
-            100% {
-                transform: rotate(360deg) scale(1);
-            }
         }
         header {
             text-align: center; /* Centrar horizontalmente */
@@ -81,10 +70,17 @@
             position: relative;
             overflow: hidden;
             border-radius: 10px; /* Borde biselado */
-            transition: transform 0.3s ease-in-out;
         }
-        .button:hover {
-            transform: scale(1.1); /* Efecto de zoom in */
+        .button:hover img {
+            animation: zoomInOut 1s ease-in-out infinite alternate; /* Efecto de zoom in y out */
+        }
+        @keyframes zoomInOut {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
         }
         .button img {
             position: absolute;
