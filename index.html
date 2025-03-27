@@ -146,6 +146,10 @@
         <button class="button" onclick="openCubes2048()">
             <img src="https://images.crazygames.com/games/cubes-2048-io/cover_16x9-1693298929425.png?auto=format,compress&q=75&cs=strip" alt="Cubes 2048">
         </button>
+        <!-- Nuevo botón Puppet Fighter 2 Player -->
+        <button class="button" onclick="openPuppetFighter()">
+            <img src="https://images.crazygames.com/puppet-fighter-2-player/20221123094627/puppet-fighter-2-player-cover?auto=format,compress&q=75&cs=strip" alt="Puppet Fighter 2 Player">
+        </button>
     </div>
 
     <script>
@@ -237,6 +241,13 @@
         function openCubes2048() {
             var newWindow = window.open('about:blank', '_blank');
             newWindow.document.write('<html><head><title>Cubes 2048</title></head><body style="margin:0"><iframe src="https://7juegos.es/juegos/14252-cubes-2048io.html" style="width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></body></html>');
+            newWindow.document.close();
+        }
+
+        // Nueva función para el botón Puppet Fighter 2 Player
+        function openPuppetFighter() {
+            var newWindow = window.open('about:blank', '_blank');
+            newWindow.document.write('<html><head><title>Puppet Fighter 2 Player</title></head><body style="margin:0"><iframe src="https://www.gamearter.com/game/puppet-fighter-2-player/" style="width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></body></html>');
             newWindow.document.close();
         }
     </script>
