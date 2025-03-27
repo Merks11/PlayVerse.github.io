@@ -142,6 +142,10 @@
         <button class="button" onclick="openSmashKarts()">
             <img src="https://cdn.webgamer.io/games/smash-karts/smash-karts.1280x.85pc.webp" alt="Smash Karts">
         </button>
+        <!-- Nuevo botón Cubes 2048 -->
+        <button class="button" onclick="openCubes2048()">
+            <img src="https://images.crazygames.com/games/cubes-2048-io/cover_16x9-1693298929425.png?auto=format,compress&q=75&cs=strip" alt="Cubes 2048">
+        </button>
     </div>
 
     <script>
@@ -226,6 +230,13 @@
         function openSmashKarts() {
             var newWindow = window.open('about:blank', '_blank');
             newWindow.document.write('<html><head><title>Smash Karts</title></head><body style="margin:0"><iframe src="https://smashkarts.io/" style="width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></body></html>');
+            newWindow.document.close();
+        }
+
+        // Nueva función para el botón Cubes 2048
+        function openCubes2048() {
+            var newWindow = window.open('about:blank', '_blank');
+            newWindow.document.write('<html><head><title>Cubes 2048</title></head><body style="margin:0"><iframe src="https://7juegos.es/juegos/14252-cubes-2048io.html" style="width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></body></html>');
             newWindow.document.close();
         }
     </script>
