@@ -134,6 +134,10 @@
         <button class="button" onclick="openBuildNowGG()">
             <img src="https://imgs.crazygames.com/buildnow-gg_16x9/20250217093036/buildnow-gg_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop" alt="BuildNow GG">
         </button>
+        <!-- Nuevo botón Kour.io -->
+        <button class="button" onclick="openKourIo()">
+            <img src="https://imgs.crazygames.com/kour-io_16x9/20241107024955/kour-io_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop" alt="Kour.io">
+        </button>
     </div>
 
     <script>
@@ -204,6 +208,13 @@
         function openBuildNowGG() {
             var newWindow = window.open('about:blank', '_blank');
             newWindow.document.write('<html><head><title>BuildNow GG</title></head><body style="margin:0"><iframe src="https://buildnow-gg.io/" style="width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></body></html>');
+            newWindow.document.close();
+        }
+
+        // Nueva función para el botón Kour.io
+        function openKourIo() {
+            var newWindow = window.open('about:blank', '_blank');
+            newWindow.document.write('<html><head><title>Kour.io</title></head><body style="margin:0"><iframe src="https://kour.io/" style="width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></body></html>');
             newWindow.document.close();
         }
     </script>
