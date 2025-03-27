@@ -138,6 +138,10 @@
         <button class="button" onclick="openKourIo()">
             <img src="https://imgs.crazygames.com/kour-io_16x9/20241107024955/kour-io_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop" alt="Kour.io">
         </button>
+        <!-- Nuevo botón Smash Karts -->
+        <button class="button" onclick="openSmashKarts()">
+            <img src="https://cdn.webgamer.io/games/smash-karts/smash-karts.1280x.85pc.webp" alt="Smash Karts">
+        </button>
     </div>
 
     <script>
@@ -215,6 +219,13 @@
         function openKourIo() {
             var newWindow = window.open('about:blank', '_blank');
             newWindow.document.write('<html><head><title>Kour.io</title></head><body style="margin:0"><iframe src="https://kour.io/" style="width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></body></html>');
+            newWindow.document.close();
+        }
+
+        // Nueva función para el botón Smash Karts
+        function openSmashKarts() {
+            var newWindow = window.open('about:blank', '_blank');
+            newWindow.document.write('<html><head><title>Smash Karts</title></head><body style="margin:0"><iframe src="https://smashkarts.io/" style="width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></body></html>');
             newWindow.document.close();
         }
     </script>
