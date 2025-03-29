@@ -8,25 +8,42 @@
 </head>
 <body>
     <h1>Viewers de index.html</h1>
+
+    <label for="timeInterval">Selecciona el intervalo de tiempo:</label>
+    <select id="timeInterval" onchange="updateChart()">
+        <option value="hours">Horas</option>
+        <option value="days">Días</option>
+        <option value="months">Meses</option>
+    </select>
+
     <canvas id="viewersChart" width="400" height="200"></canvas>
 
     <script>
-        // Datos de ejemplo
-        const labels = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'];
-        const data = {
-            labels: labels,
-            datasets: [{
-                label: 'Viewers',
-                data: [10, 15, 20, 25, 30, 35],
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }]
+        const viewersData = {
+            hours: [5, 10, 15, 20, 25, 30],
+            days: [10, 20, 30, 40, 50, 60],
+            months: [100, 200, 300, 400, 500, 600]
         };
 
-        const config = {
+        const timeLabels = {
+            hours: ['1am', '2am', '3am', '4am', '5am', '6am'],
+            days: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio']
+        };
+
+        const ctx = document.getElementById('viewersChart').getContext('2d');
+        let viewersChart = new Chart(ctx, {
             type: 'line',
-            data: data,
+            data: {
+                labels: timeLabels.hours,
+                datasets: [{
+                    label: 'Viewers',
+                    data: viewersData.hours,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
             options: {
                 scales: {
                     y: {
@@ -34,12 +51,14 @@
                     }
                 }
             }
-        };
+        });
 
-        const viewersChart = new Chart(
-            document.getElementById('viewersChart'),
-            config
-        );
+        function updateChart() {
+            const interval = document.getElementById('timeInterval').value;
+            viewersChart.data.labels = timeLabels[interval];
+            viewersChart.data.datasets[0].data = viewersData[interval];
+            viewersChart.update();
+        }
     </script>
 </body>
 </html>
