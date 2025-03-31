@@ -13,6 +13,7 @@
             left: 10px;
             color: white;
             font-family: Arial, sans-serif;
+            display: none;
         }
         button {
             padding: 10px;
@@ -30,23 +31,19 @@
         <button onclick="spawnBomb('nuclear')">Bomba Nuclear</button>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/cannon-es@0.20.0/dist/cannon-es.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/first-person-controls/first-person-controls.min.js"></script>
+    <script type="module">
+        import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
+        import * as CANNON from 'https://cdn.jsdelivr.net/npm/cannon-es@0.20.0/dist/cannon-es.js';
 
-    <script>
-        // Configurar escena, cámara y renderizador
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // Configurar físicas
         const world = new CANNON.World();
         world.gravity.set(0, -9.8, 0);
 
-        // Crear suelo físico y visual
         const groundBody = new CANNON.Body({ type: CANNON.Body.STATIC, shape: new CANNON.Plane() });
         groundBody.position.set(0, -1, 0);
         groundBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
@@ -56,38 +53,29 @@
         ground.rotation.x = -Math.PI / 2;
         scene.add(ground);
 
-        // Luz
         const light = new THREE.DirectionalLight(0xffffff, 1);
         light.position.set(10, 20, 10);
         scene.add(light);
 
-        // Generar ciudad con cubos aleatorios
-        function createBuilding(x, z, height) {
-            const body = new CANNON.Body({
-                type: CANNON.Body.STATIC,
-                shape: new CANNON.Box(new CANNON.Vec3(2, height / 2, 2)),
-                position: new CANNON.Vec3(x, height / 2, z),
-            });
-            world.addBody(body);
-
-            const mesh = new THREE.Mesh(new THREE.BoxGeometry(4, height, 4), new THREE.MeshStandardMaterial({ color: "white" }));
-            mesh.position.set(x, height / 2, z);
-            scene.add(mesh);
-        }
-
-        for (let i = 0; i < 10; i++) {
-            createBuilding(Math.random() * 50 - 25, Math.random() * 50 - 25, Math.random() * 10 + 5);
-        }
-
-        // Controlador de primera persona
-        const controls = new FirstPersonControls(camera, renderer.domElement);
-        controls.movementSpeed = 10;
-        controls.lookSpeed = 0.1;
-
-        // Lista de bombas
+        let objects = [];
+        let heldObject = null;
         let bombs = [];
+        let keys = {};
+        let speed = 0.2;
 
-        function spawnBomb(type) {
+        document.addEventListener("keydown", (e) => keys[e.key] = true);
+        document.addEventListener("keyup", (e) => keys[e.key] = false);
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "e") {
+                document.getElementById("ui").style.display = 
+                    document.getElementById("ui").style.display === "none" ? "block" : "none";
+            }
+        });
+
+        document.addEventListener("mousedown", pickUpObject);
+        document.addEventListener("mouseup", () => heldObject = null);
+
+        window.spawnBomb = function(type) {
             let size = type === "nuclear" ? 2 : 1;
             let color = type === "nuclear" ? "green" : "red";
 
@@ -96,4 +84,85 @@
                 shape: new CANNON.Sphere(size),
                 position: new CANNON.Vec3(camera.position.x, camera.position.y - 1, camera.position.z),
             });
-            world.addBody(bomb
+            world.addBody(bombBody);
+
+            const bombMesh = new THREE.Mesh(
+                new THREE.SphereGeometry(size),
+                new THREE.MeshStandardMaterial({ color })
+            );
+            scene.add(bombMesh);
+
+            bombs.push({ body: bombBody, mesh: bombMesh, type });
+            setTimeout(() => explodeBomb(bombBody), 3000);
+        };
+
+        function explodeBomb(bombBody) {
+            const explosionForce = bombBody.shapes[0].radius * 50;
+            world.bodies.forEach(body => {
+                if (body !== bombBody) {
+                    let distance = bombBody.position.vsub(body.position).length();
+                    if (distance < 10) {
+                        let force = new CANNON.Vec3().copy(body.position).vsub(bombBody.position);
+                        force.normalize();
+                        force.scale(explosionForce / distance, force);
+                        body.applyImpulse(force, body.position);
+                    }
+                }
+            });
+            scene.remove(bombBody.mesh);
+            world.removeBody(bombBody);
+        }
+
+        function pickUpObject() {
+            if (heldObject) return;
+            let closest = null;
+            let minDist = 5;
+            objects.forEach(obj => {
+                let dist = camera.position.distanceTo(obj.mesh.position);
+                if (dist < minDist) {
+                    closest = obj;
+                    minDist = dist;
+                }
+            });
+            if (closest) {
+                heldObject = closest;
+                heldObject.body.type = CANNON.Body.KINEMATIC;
+            }
+        }
+
+        function movePlayer() {
+            let direction = new THREE.Vector3();
+            camera.getWorldDirection(direction);
+            if (keys["w"]) camera.position.addScaledVector(direction, speed);
+            if (keys["s"]) camera.position.addScaledVector(direction, -speed);
+            if (keys["a"]) camera.position.x -= speed;
+            if (keys["d"]) camera.position.x += speed;
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            world.step(1 / 60);
+            movePlayer();
+
+            bombs.forEach(obj => {
+                obj.mesh.position.copy(obj.body.position);
+                obj.mesh.quaternion.copy(obj.body.quaternion);
+            });
+
+            objects.forEach(obj => {
+                obj.mesh.position.copy(obj.body.position);
+                obj.mesh.quaternion.copy(obj.body.quaternion);
+            });
+
+            if (heldObject) {
+                let newPos = camera.position.clone().add(camera.getWorldDirection(new THREE.Vector3()).multiplyScalar(2));
+                heldObject.body.position.copy(new CANNON.Vec3(newPos.x, newPos.y, newPos.z));
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
