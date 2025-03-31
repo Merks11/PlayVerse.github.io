@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Caos 3D</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        canvas { display: block; }
+        #ui {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        button {
+            padding: 10px;
+            margin: 5px;
+            background: red;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="ui">
+        <button onclick="spawnBomb('normal')">Bomba Normal</button>
+        <button onclick="spawnBomb('nuclear')">Bomba Nuclear</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cannon-es@0.20.0/dist/cannon-es.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/first-person-controls/first-person-controls.min.js"></script>
+
+    <script>
+        // Configurar escena, cámara y renderizador
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Configurar físicas
+        const world = new CANNON.World();
+        world.gravity.set(0, -9.8, 0);
+
+        // Crear suelo físico y visual
+        const groundBody = new CANNON.Body({ type: CANNON.Body.STATIC, shape: new CANNON.Plane() });
+        groundBody.position.set(0, -1, 0);
+        groundBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
+        world.addBody(groundBody);
+
+        const ground = new THREE.Mesh(new THREE.PlaneGeometry(100, 100), new THREE.MeshStandardMaterial({ color: "gray" }));
+        ground.rotation.x = -Math.PI / 2;
+        scene.add(ground);
+
+        // Luz
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(10, 20, 10);
+        scene.add(light);
+
+        // Generar ciudad con cubos aleatorios
+        function createBuilding(x, z, height) {
+            const body = new CANNON.Body({
+                type: CANNON.Body.STATIC,
+                shape: new CANNON.Box(new CANNON.Vec3(2, height / 2, 2)),
+                position: new CANNON.Vec3(x, height / 2, z),
+            });
+            world.addBody(body);
+
+            const mesh = new THREE.Mesh(new THREE.BoxGeometry(4, height, 4), new THREE.MeshStandardMaterial({ color: "white" }));
+            mesh.position.set(x, height / 2, z);
+            scene.add(mesh);
+        }
+
+        for (let i = 0; i < 10; i++) {
+            createBuilding(Math.random() * 50 - 25, Math.random() * 50 - 25, Math.random() * 10 + 5);
+        }
+
+        // Controlador de primera persona
+        const controls = new FirstPersonControls(camera, renderer.domElement);
+        controls.movementSpeed = 10;
+        controls.lookSpeed = 0.1;
+
+        // Lista de bombas
+        let bombs = [];
+
+        function spawnBomb(type) {
+            let size = type === "nuclear" ? 2 : 1;
+            let color = type === "nuclear" ? "green" : "red";
+
+            const bombBody = new CANNON.Body({
+                mass: 5,
+                shape: new CANNON.Sphere(size),
+                position: new CANNON.Vec3(camera.position.x, camera.position.y - 1, camera.position.z),
+            });
+            world.addBody(bomb
